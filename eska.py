@@ -17,7 +17,7 @@ ESKA_URL = "http://www.eskago.pl/radio/eska-rock"
 
 
 def radio_url() -> str:
-    # os.environ['MOZ_HEADLESS'] = '1'
+    os.environ['MOZ_HEADLESS'] = '1'
     browser = webdriver.Firefox()
     browser.get(ESKA_URL)
 
@@ -44,10 +44,13 @@ def radio_url() -> str:
 
 
 def application(window):
+    os.environ['MOZ_HEADLESS'] = '1'
+    browser = webdriver.Firefox()
+    browser.get(radio_url())
 
-    p = vlc.MediaPlayer(radio_url())
-    p.play()
-    # window.quit()
+    time.sleep(10)
+    browser.quit()
+    window.quit()
 
 
 top = tkinter.Tk()
