@@ -13,6 +13,7 @@ class PlayStopButton(tkinter.Button):
         self.play_image = PhotoImage(file="images/play.png")
         self.stop_image = PhotoImage(file="images/stop.png")
         self.player = Player()
+        self.parent = parent
 
         super().__init__(
             parent,
@@ -23,8 +24,8 @@ class PlayStopButton(tkinter.Button):
 
     def play_stop_icon_change(self, image: PhotoImage):
         self.configure(command=partial(self.play_stop_icon_change, self["image"]), image=image)
+        self.parent.update()
 
-        # Icons have been changed
         if self.play():
             self.player.stop()
         if not self.play():

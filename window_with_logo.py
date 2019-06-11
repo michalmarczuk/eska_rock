@@ -5,7 +5,7 @@ import tkinter
 
 
 WINDOW_WIDTH = 320
-WINDOW_HEIGHT = 400
+WINDOW_HEIGHT = 420
 BACKGROUND_COLOR = "grey12"
 
 

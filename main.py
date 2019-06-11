@@ -5,6 +5,8 @@
 import tkinter
 from tkinter import PhotoImage
 from functools import partial
+
+from logger import Logger
 from play_stop_button import PlayStopButton
 from window_with_logo import WindowWithLogo
 
@@ -20,6 +22,10 @@ logo.grid(row=0)
 
 play_stop_button = PlayStopButton(window)
 play_stop_button.grid(row=1, column=0, sticky=tkinter.W, padx=(15, 15), pady=(15, 15))
+
+logging_label = tkinter.Label(window, text="tra la la la la la la la la la ")
+logging_label.grid(row=2, column=0, pady=(20, 0))
+Logger.get_instance().logging_label = logging_label
 
 frame = tkinter.Frame(window)
 frame.configure(background=BACKGROUND_COLOR)
