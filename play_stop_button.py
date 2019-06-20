@@ -12,7 +12,6 @@ class PlayStopButton(tkinter.Button):
     def __init__(self, parent):
         self.play_image = PhotoImage(file="images/play.png")
         self.stop_image = PhotoImage(file="images/stop.png")
-        self.player = Player()
 
         super().__init__(
             parent,
@@ -26,9 +25,9 @@ class PlayStopButton(tkinter.Button):
         self.master.update()
 
         if self.play():
-            self.player.stop()
+            Player.get_instance().stop()
         if not self.play():
-            self.player.play()
+            Player.get_instance().play()
 
     def play(self) -> bool:
         return str(self["image"]) == str(self.play_image)

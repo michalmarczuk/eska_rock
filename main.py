@@ -6,6 +6,7 @@ import tkinter
 from tkinter import PhotoImage
 from functools import partial
 
+from current_song import CurrentSong
 from logger import Logger
 from play_stop_button import PlayStopButton
 from window_with_logo import WindowWithLogo
@@ -43,6 +44,11 @@ wait_90_button.grid(row=2, column=0, pady=(5, 5))
 # timer_label = tkinter.Label(window, text="0")
 
 
+def song_info():
+    CurrentSong.get()
+    window.after(10000, lambda: song_info())
+
+
 def timer(counter: int):
     frame.grid_forget()
     minutes = str(int(counter / 60)).zfill(2)
@@ -65,6 +71,8 @@ wait_30_button.config(command=partial(timer, 30))
 wait_60_button.config(command=partial(timer, 60))
 wait_90_button.config(command=partial(timer, 90))
 
+
+window.after(10000, lambda: song_info())
 
 window.mainloop()
 
