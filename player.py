@@ -48,7 +48,8 @@ class Player:
             try:
                 Logger.get_instance().info("Szukam adresu do radia na stronie")
                 url = WebDriverWait(self.browser, 10).until(
-                    EC.presence_of_element_located((By.TAG_NAME, "video"))).get_attribute('src')
+                    EC.presence_of_element_located((
+                        By.CSS_SELECTOR, 'input[name="data-radio-url"]'))).get_attribute('value')
             except TimeoutException:
                 attempt += 1
                 Logger.get_instance().info(f"Szukam adresu do radia na stronie({attempt})")
